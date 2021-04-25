@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>数字滚动</title>
+    <style>
+      .js-bounty {
+        font-size: 20px;
+        font-family: Roboto;
+        fill: #d9d9;
+        color: red;
+        /* text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5); */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="js-bounty"></div>
+  </body>
+  <script src="https://unpkg.com/bounty@1.1.6/lib/bounty.js"></script>
+  <script>
+    bounty.default({ el: '.js-bounty', fill: '#000', value: '$9,000' })
+  </script>
+</html>
