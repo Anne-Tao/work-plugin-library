@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3d Photo Effect with Pixi.js</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <script src="./js/pixi.min.js"></script>
+    <script>
+      const app = new PIXI.Application({ width: window.innerWidth, height: window.innerHeight })
+      document.body.appendChild(app.view)
+      let img = new PIXI.Sprite.from('img/4.jpeg')
+      img.width = window.innerWidth
+      img.height = window.innerHeight
+      app.stage.addChild(img)
+
+      displacementSprite = new PIXI.Sprite.from('img/cloud.png')
+      displacementFilter = new PIXI.filters.DisplacementFilter(displacementSprite)
+      displacementSprite.texture.baseTexture.wrapMode = PIXI.WRAP_MODES.REPEAT
+      app.stage.addChild(displacementSprite)
+      app.stage.filters = [displacementFilter]
+      app.renderer.view.style.transform = 'scale(1.02)'
+      displacementSprite.scale.x = 4
+      displacementSprite.scale.y = 4
+      animate()
+      function animate() {
+        displacementSprite.x += 10
+        displacementSprite.y += 4
+        requestAnimationFrame(animate)
+      }
+    </script>
+  </body>
+</html>

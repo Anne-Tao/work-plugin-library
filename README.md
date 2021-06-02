@@ -8,3 +8,10 @@
 
 - **[CountUp.js](https://github.com/inorganik/countUp.js)**
 - **[bounty](https://github.com/coderitual/bounty)**
+
+## PIXI 水波纹
+
+预览效果 : <https://wutao.work/work-plugin-library/pixi.html>
+
+- **[pixi.js](https://github.com/pixijs/pixijs)**
+- **[YouTube](https://www.youtube.com/watch?v=O0Au0Xc-qL8)**
