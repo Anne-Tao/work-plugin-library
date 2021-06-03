@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3d Photo Effect with Pixi.js</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <script src="./js/pixi.min.js"></script>
+    <script>
+      const app = new PIXI.Application({ width: window.innerWidth, height: window.innerHeight })
+      document.body.appendChild(app.view)
+      //获取舞台
+      let stage = app.stage
+      let color = './img/4.jpeg'
+      let blackWhite = './img/4-black.png'
+      let clear = './img/clear.png'
+
+      let colorSprite
+      let blackWhiteSprite
+      let clearSprite
+
+      app.loader.add('color', color).add('blackWhite', blackWhite).add('clear', clear).load(init)
+
+      function init(loader, resources) {
+        console.log(resources)
+        colorSprite = new PIXI.Sprite(resources.color.texture)
+        blackWhiteSprite = new PIXI.Sprite(resources.blackWhite.texture)
+        clearSprite = new PIXI.Sprite(resources.clear.texture)
+
+        console.log(colorSprite)
+        clearSprite.x = window.innerWidth / 2
+        clearSprite.y = window.innerHeight / 2
+        clearSprite.anchor.x = 0.5
+        clearSprite.anchor.y = 0.5
+        colorSprite.mask = clearSprite
+
+        //把精灵添加到舞台上
+        stage.addChild(blackWhiteSprite)
+        stage.addChild(colorSprite)
+        stage.addChild(clearSprite)
+        app.renderer.view.style.transform = 'scale(1.02)'
+        //开始游戏循环
+        gameLoop()
+      }
+
+      let state = play
+      function gameLoop() {
+        // 循环调用gameLoop
+        requestAnimationFrame(gameLoop)
+        // 更新当前的游戏状态
+        state()
+        // 渲染舞台
+        app.renderer.render(stage)
+      }
+
+      //使精灵移动的函数
+      function play() {
+        if (clearSprite.width < 4920) {
+          clearSprite.width += 25
+          clearSprite.height += 25
+        }
+      }
+    </script>
+  </body>
+</html>
